@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="RxNormApp">
+  <head>
+    <title>RxNorm Demo App</title>  
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-touch.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+
+    <script type="text/javascript" src="/Controller/RxNormController.js"></script>
+    <script type="text/javascript" src="/Service/RxNormService.js"></script>
+
+    <link rel="styleSheet" href="/node_modules/angular-ui-grid/ui-grid.css"/>
+	<script src="/node_modules/angular-ui-grid/ui-grid.min.js"></script>
+
+  </head>
+
+  <style type="text/css">
+  	@media (min-width: 1024px) {
+	  .my-grid {
+	    width: 772px;
+	  }
+	}
+
+	@media (min-width: 1280px) {
+	  .my-grid {
+	    width: 972px;
+	  }
+	}
+
+	@media (min-height: 768px) {
+	  .my-grid {
+	    height: 480px;
+	  }
+	}
+
+	@media (min-height: 900px) {
+	  .my-grid {
+	    height: 615px;
+	  }
+	}
+  </style>
+
+  <body ng-controller="RxNormController">
+  	 <form ng-submit="DrugSearchByName()">
+  	  <h2>Drug Search By Name ex: cymbalta</h2>
+      <input type="search" placeholder="Search for drugs"
+       ng-model="query"/>
+    </form>
+
+ 	<br/>
+
+    <div ng-show="conceptProperties.length > 0">
+       <div ui-grid="conceptPropertiesGridOptions" class="my-grid"></div>
+	</div>
+
+	<div ng-show="interactionSourceConceptItems.length > 0">
+	   <h2>Drug Interactions</h2>
+       <div ui-grid="interactionSourceConceptItemsGridOptions" class="my-grid"></div>
+	</div>
+	
+  </body>
+</html>
